@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int partition(int *a,int f,int l)
+{int k=0;
+   int pvalue=a[l];
+for(int i=0;i<l;i++)
+{if(a[i]<=pvalue)
+{
+    swap(a[k],a[i]);
+    k++;
+}
+}
+swap(a[k],a[l]);
+return k;
+}
+
+void qSort(int *a,int f,int l)
+{ if(f<l)
+{
+    int pIndex = partition(a,f,l);
+    qSort(a,f,pIndex-1);
+    qSort(a,pIndex+1,l);
+}
+}
+
+
+
+int main() {
+int a[10]={1,4,65,3,234,6,7,8,4,6};
+qSort(a,0,9);
+for(int i=0;i<10;i++)
+cout<<a[i]<<'\t';
+
+}
